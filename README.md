@@ -1,19 +1,37 @@
 # Image Item Recognizer
 
+This is an exciting and innovative project that was developed to identify objects in an image. In this README you will find all the information you need to understand and start contributing to the project.
 
+An application that recognizes objects or items in an image based on an AI model from **Clarifai**.
+
+![App Preview]()
 
 
 ## Technologies Used
 
 The project was developed using the following technologies:
 
-- Programming Language: Typescript
+- Programming Language: **Typescript**
 - [React Native](https://docs.expo.dev) with [Expo](https://docs.expo.dev)
-- [Clarifai](https://clarifai.com)
+- [Clarifai](https://clarifai.com) using the model [**general-image-recognition**](https://clarifai.com/clarifai/main/models/general-image-recognition)
 
-## Development Environment Configuration
+## Installation Guide
 
-To configure the local development environment, follow the steps below:
+This guide is designed to help you set up and run the Landing Page on your local machine for development and testing purposes.
+
+### Requirements
+
+Before starting the installation process, make sure you have the following tools installed on your system:
+
+- [Node.js (versão 12 ou superior)](https://nodejs.org/)
+- Expo CLI
+```bash
+npm install -g expo-cli
+```
+- [Git](https://git-scm.com/)
+
+
+To configure the local **development environment**, follow the steps below:
 
 1. Clone this repository to your local machine.
 ```bash
@@ -34,6 +52,18 @@ npm run start
 yarn start
 # or
 pnpm start
+```
+
+4. Configure environment variables
+
+Create an .env file in the root of the project and set the following environment variables:
+
+```bash 
+EXPO_PUBLIC_PAT = "your_clarifai_pat"
+EXPO_PUBLIC_USER_ID = "your_clarifai_user_id"
+EXPO_PUBLIC_APP_ID = "your_clarifai_app_id"
+EXPO_PUBLIC_MODEL_ID = "your_clarifai_model_id"
+EXPO_PUBLIC_MODEL_VERSION_ID = "your_clarifai_model_version_id"
 ```
 
 Open the application Expo Go in your device and scan the QR code to see the result.
