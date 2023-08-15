@@ -34,18 +34,16 @@ export default function App() {
             {
               data: {
                 image: {
-                  url: image,
+                  base64: selection.assets[0].base64,
                 }
               }
             }
           ]
         }
 
-        console.log(selection.assets[0].base64)
-
         const result = await api.post(`/models/${process.env.EXPO_PUBLIC_MODEL_ID}/versions/${process.env.EXPO_PUBLIC_MODEL_VERSION_ID}/outputs`, requestBody);
 
-        console.log(result)
+        console.log(result.data.outputs[0].data.concepts)
 
       }
     }
