@@ -4,6 +4,7 @@ import { Item } from './src/components/Item';
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 import { CameraIcon } from 'lucide-react-native';
+import { api } from './src/lib/axios';
 
 export default function App() {
   const [image, setImage] = useState<string | undefined>(undefined);
@@ -15,13 +16,36 @@ export default function App() {
       const selection = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images, 
         allowsEditing: true,
-        aspect: [4, 3],
+        aspect: [3, 3],
         quality: 1,
+        base64: true
       })
 
       if (!selection.canceled) {
 
         setImage(selection.assets[0].uri);
+
+        const requestBody = {
+          user_app_id: {
+            user_id: process.env.EXPO_PUBLIC_USER_ID,
+            app_id: process.env.EXPO_PUBLIC_APP_ID
+          },
+          inputs: [
+            {
+              data: {
+                image: {
+                  url: image,
+                }
+              }
+            }
+          ]
+        }
+
+        console.log(selection.assets[0].base64)
+
+        const result = await api.post(`/models/${process.env.EXPO_PUBLIC_MODEL_ID}/versions/${process.env.EXPO_PUBLIC_MODEL_VERSION_ID}/outputs`, requestBody);
+
+        console.log(result)
 
       }
     }
@@ -83,6 +107,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   image: {
+    width: screenWidth,
     height: '100%',
   },
   card: {
