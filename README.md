@@ -8,7 +8,7 @@
 The project was developed using the following technologies:
 
 - Programming Language: Typescript
-- [Expo](https://docs.expo.dev)
+- [React Native](https://docs.expo.dev) with [Expo](https://docs.expo.dev)
 - [Clarifai](https://clarifai.com)
 
 ## Development Environment Configuration
@@ -29,14 +29,14 @@ npm install
 3. Run the development server:
 
 ```bash
-npm run dev
+npm run start
 # or
-yarn dev
+yarn start
 # or
-pnpm dev
+pnpm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the application Expo Go in your device and scan the QR code to see the result.
 
 
 Make sure you have the correct versions of technologies and dependencies installed to avoid compatibility issues.
@@ -46,7 +46,7 @@ If you want to contribute to the project, please follow the steps below:
 
 1. Fork this repository and clone it to your local machine.
 ```shell
-git clone https://github.com/seu-usuario/nome-do-repositorio-forkado.git
+git clone https://github.com/arnaldoucuassapi/image-item-recognizer.git
 ```
 
 2. Create a branch for your contribution.
