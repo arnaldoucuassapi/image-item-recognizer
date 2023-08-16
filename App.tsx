@@ -1,13 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions, ScrollView, Image } from 'react-native';
-import { Item } from './src/components/Item';
+import { Item, ItemProps } from './src/components/Item';
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 import { CameraIcon } from 'lucide-react-native';
 import { api } from './src/lib/axios';
+import { Loading } from './src/components/Loading';
+
+interface ItemDataType extends ItemProps {
+  id: string
+}
 
 export default function App() {
   const [image, setImage] = useState<string | undefined>(undefined);
+  const [items, setItems] = useState<ItemDataType[] | null>(null);
+  const [loading, setLoading] = useState(false);
 
   async function openImagesLibrary() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -24,6 +31,8 @@ export default function App() {
       if (!selection.canceled) {
 
         setImage(selection.assets[0].uri);
+
+        setLoading(true);
 
         const requestBody = {
           user_app_id: {
@@ -43,7 +52,9 @@ export default function App() {
 
         const result = await api.post(`/models/${process.env.EXPO_PUBLIC_MODEL_ID}/versions/${process.env.EXPO_PUBLIC_MODEL_VERSION_ID}/outputs`, requestBody);
 
-        console.log(result.data.outputs[0].data.concepts)
+        setItems(result.data.outputs[0].data.concepts);
+
+        setLoading(false);
 
       }
     }
@@ -59,19 +70,27 @@ export default function App() {
         {!image && (
           <Text 
             style={{ color: '#000', textAlign: 'center', top: '45%' }}
-          >Seleccione a imagem de um prato</Text>
+          >Seleccione uma imagem</Text>
         )}
 
         <Image style={styles.image} source={{ uri: image}} />
       </View>
 
-      <ScrollView style={styles.card}>
+      <View style={styles.card}>
         <View style={styles.tip}>
-          <Text style={styles.tipText}>Aqui irá aparecer a dica bônus</Text>
+          <Text style={styles.tipText}>Aqui irá aparecer as dicas</Text>
         </View>
 
-        <Item text='Egge' />
-      </ScrollView>
+        {loading && <Loading />}
+        
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {items && 
+            items.map((item) => (
+              <Item key={item.id} name={item.name} value={item.value} />
+            ))
+          }
+        </ScrollView>
+      </View>
 
       <StatusBar style="dark" backgroundColor='#fff' translucent />
     </View>
