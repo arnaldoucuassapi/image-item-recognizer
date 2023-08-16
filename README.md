@@ -13,7 +13,7 @@ The project was developed using the following technologies:
 
 - Programming Language: **Typescript**
 - [React Native](https://docs.expo.dev) with [Expo](https://docs.expo.dev)
-- [Clarifai](https://clarifai.com) using the model [**general-image-recognition**](https://clarifai.com/clarifai/main/models/general-image-recognition)
+- [Clarifai API](https://clarifai.com) using the model [**general-image-recognition**](https://clarifai.com/clarifai/main/models/general-image-recognition)
 
 ## Installation Guide
 
