@@ -4,7 +4,15 @@ This is an exciting and innovative project that was developed to identify object
 
 An application that recognizes objects or items in an image based on an AI model from **Clarifai**.
 
-![App Preview]()
+### Features
+
+- [ ✅ ] Get image from gallery
+- [ ✅ ] Send selected image to Clarifai API
+- [ ✅ ] Process the API response and list the Items
+- Translate items into another language
+
+
+### ![App Preview]()
 
 
 ## Technologies Used
