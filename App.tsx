@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     zIndex: 6,
     width: screenWidth,
     height: '60%',
-    paddingVertical: 16,
+    paddingVertical: 24,
     paddingHorizontal: 24,
     backgroundColor: '#fff',
     borderTopLeftRadius: 32,
