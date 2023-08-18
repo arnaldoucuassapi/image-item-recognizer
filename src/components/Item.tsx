@@ -26,9 +26,6 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     backgroundColor: '#f2f2f2',
     borderRadius: 4,
-    shadowColor: '#000',
-    shadowOpacity: 0.9,
-    shadowRadius: 8,
   },
   itemText: {
     textAlign: 'center',
